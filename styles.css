@@ -17,6 +17,8 @@ body {
   
   .logo {
     text-align: center; /* Вирівнюємо текст по центру */
+    display: inline-block; /* Робимо контейнер для тексту компактним */
+    width: 100%; /* Ширина контейнера */
 }
 
 .logo h1 {
@@ -26,12 +28,19 @@ body {
 }
 
 .logo h1 span {
-    display: block; /* Розміщуємо текст "for GTM Practice" на новому рядку */
-    font-size: 1.2rem; /* Менший розмір шрифту для тексту підзаголовка */
-    font-style: italic; /* Додаємо курсив */
-    font-weight: normal; /* Менша товщина шрифту */
-    color: #aaa; /* Колір тексту (можна налаштувати під ваш дизайн) */
-    margin-top: 0.2rem; /* Додаємо невеликий відступ зверху */
+    display: block; /* Розміщуємо підзаголовок на новому рядку */
+    font-size: 1.2rem; /* Зменшений розмір тексту */
+    font-style: italic; /* Курсив */
+    font-weight: normal; /* Тонший шрифт */
+    color: #aaa; /* Контрастний колір */
+    margin-top: 0.2rem; /* Відступ зверху */
+    text-align: center; /* Центрування тексту */
+}
+
+.logo h1, 
+.logo h1 span {
+    width: 250px; /* Встановлюємо однакову ширину для обох текстів */
+    display: inline-block; /* Щоб текст вирівнювався по ширині */
 }
 
   nav ul {
