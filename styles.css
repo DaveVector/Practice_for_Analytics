@@ -15,19 +15,25 @@ body {
     align-items: center;
   }
   
-  .logo h1 {
-    font-size: 2.5rem;
+  .logo {
+    text-align: center;
+}
+
+.logo h1 {
+    font-size: 2.5rem; /* Основний текст */
     font-weight: bold;
     margin: 0;
-  }
-  
-  .logo h1 span {
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: normal;
-    margin-left: 0.5rem;
-  }
-  
+}
+
+.logo h1 span {
+    display: block; /* Робимо підзаголовок окремим рядком */
+    font-size: 1.2rem; /* Розмір меншого тексту */
+    font-style: italic; /* Курсив */
+    font-weight: normal; /* Менша товщина шрифту */
+    color: #aaa; /* Колір для контрасту */
+    margin-top: 0.5rem; /* Відступ зверху */
+}
+ 
   nav ul {
     display: flex;
     justify-content: center;
