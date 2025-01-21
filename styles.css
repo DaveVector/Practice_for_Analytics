@@ -49,14 +49,13 @@ body {
     margin-right: 1rem;
   }
   
-  .icons {
-    display: flex;
-    align-items: center;
-  }
-  
   .icons a {
     color: #fff;
     margin-left: 1rem;
+  }
+  
+  .icons a i {
+    font-size: 1.5rem; /* або іншій потрібний розмір */
   }
   
   /* Головна секція */
