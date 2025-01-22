@@ -1,17 +1,62 @@
 [
-    {
-      "id": 1,
-      "name": "Товар 1",
-      "price": 100,
-      "currency": "UAH",
-      "image": "images/product1.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Товар 2",
-      "price": 200,
-      "currency": "UAH",
-      "image": "images/product2.jpg"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Xiaomi Redmi 14C 6/128GB",
+    "priceUAH": 5999,
+    "priceUSD": 153,
+    "discountUAH": 0,
+    "discountUSD": 0,
+    "availability": "В наявності",
+    "image": "Xiaomi Redmi 14C.png"
+  },
+  {
+    "id": 2,
+    "name": "Blackview TAB90 blak 4/64GB",
+    "priceUAH": 8699,
+    "priceUSD": 223,
+    "discountUAH": 1000,
+    "discountUSD": 30,
+    "availability": "Немає в наявності",
+    "image": "Blackview TAB90 blak.png"
+  },
+  {
+    "id": 3,
+    "name": "Acer Nitro V 15 ANV15-51-53R5",
+    "priceUAH": 28400,
+    "priceUSD": 729,
+    "discountUAH": 3000,
+    "discountUSD": 80,
+    "availability": "В наявності",
+    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
+  },
+  {
+    "id": 4,
+    "name": "Acer Nitro V 15 ANV15-51-53R5",
+    "priceUAH": 28400,
+    "priceUSD": 729,
+    "discountUAH": 3000,
+    "discountUSD": 80,
+    "availability": "В наявності",
+    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
+  },
+  {
+    "id": 5,
+    "name": "Acer Nitro V 15 ANV15-51-53R5",
+    "priceUAH": 28400,
+    "priceUSD": 729,
+    "discountUAH": 3000,
+    "discountUSD": 80,
+    "availability": "В наявності",
+    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
+  },
+  {
+    "id": 6,
+    "name": "Acer Nitro V 15 ANV15-51-53R5",
+    "priceUAH": 28400,
+    "priceUSD": 729,
+    "discountUAH": 3000,
+    "discountUSD": 80,
+    "availability": "В наявності",
+    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
+  }
+]

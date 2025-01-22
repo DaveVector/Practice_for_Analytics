@@ -156,18 +156,18 @@ h2 {
   .catalog {
     display: flex;
     align-items: flex-start;
-
-    padding: 1rem;
-
-    background-color: #f5f5f5;
-    border-right: 1px solid #ddd;
   }
 
   .filter-group {
     display: flex;
     flex-direction: column;
     min-width: 30%;
-    margin-bottom: 1rem;
+    padding: 1rem;
+    margin: 0 1rem;
+
+    background-color: #f5f5f5;
+    border-right: 1px solid #ddd;
+    border-radius: 8px;
   }
 
   .filter-group label {
@@ -180,65 +180,145 @@ h2 {
     margin-bottom: 1rem;
     font-size: 22px;
   }
-
-  #products-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap; /* Розміщення карток в кілька рядків */
-  }
   
-  .product-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    width: 200px;
-    text-align: center;
-  }
-  
-  .product-card img {
-    max-width: 100%; /* Робимо зображення адаптивним */
-    border-radius: 5px;
-  }
-  
-  /* Сітка товарів
+  /* Сітка товарів */
   .product-grid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
-    padding: 1rem;
+
+    width: 100%;
+    padding: 0 1rem 0 0;
+
+    justify-content: flex-start; /* Вирівнюємо картки по лівому краю */
   }
 
   .product-card {
-    width: calc(100% / 3 - 2.8rem);
+    width: calc(100% / 3 - 0.8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Розподіл елементів по вертикалі */
     background-color: #fff;
     border: 1px solid #ddd;
-    padding: 1rem;
+    border-radius: 8px;
     text-align: center;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
   }
   
   .product-card img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+    object-fit: contain;
+    box-sizing: border-box;
   }
   
-  .product-card h3 {
-    margin-top: 1rem;
+  .product-card .details {
+    flex-grow: 1; /* Дозволяє блоку займати весь доступний простір */
+    display: flex;
+    flex-direction: column; /* Вирівнювання елементів вертикально */
+    justify-content: space-between; /* Рівномірний розподіл елементів */
+    padding: 12px;
+    text-align: left; /* Вирівнюємо текст по лівому краю */
   }
   
-  .product-card p {
+  .product-card .name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 10px 0;
+  }
+  
+  .product-card .availability {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Відступ між іконкою та текстом */
+  }
+
+  /* Ціна зі знижкою */
+  .price {
+    color: #e74c3c; /* Червоний колір для ціни зі знижкою */
     font-weight: bold;
-    margin-bottom: 1rem;
   }
+
+  /* Ціна без знижки */
+  .price.no-discount {
+    color: #000; /* Чорний колір для звичайної ціни */
+    font-weight: normal;
+  }
+
+  .product-card .discount {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #999;
+    text-decoration: line-through;
+    margin: 10px 0 0 0;
+  }
+  
+  .product-card .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+  }  
   
   .product-card button {
-    background-color: #007bff;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
     color: #fff;
     border: none;
-    padding: 0.5rem 1rem;
+    border-radius: 0 0 8px 8px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background 0.3s;
   }
-   */
+
+  /* Наявність товару */
+  .product-card button:hover {
+    background: #0056b3;
+  }
+
+  .availability {
+    font-weight: bold;
+  }
+  
+  .availability.in-stock {
+    color: green;
+  }
+  
+  .availability.out-of-stock {
+    color: rgb(129, 129, 129);
+  }
+
+  /* Стиль для блідної ціни, якщо товару немає в наявності */
+  .price.faded {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #999; /* Світло-сірий колір */
+  font-style: italic; /* Додаємо нахилений текст */
+  }
+
+  /* Кнопка "Забронювати" */
+  button.reserve {
+  background-color: grey; /* Помаранчевий колір кнопки */
+  color: #fff; /* Білий текст */
+  font-size: 1rem;
+  border: none;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
+
+  button.reserve:hover {
+  background-color: rgb(77, 77, 77); /* Темніший помаранчевий при наведенні */
+  }
+
   /* Підвал */
   footer {
     background-color: #333;
@@ -250,4 +330,16 @@ h2 {
   a {
     color: #333;
     text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .product-card {
+      width: calc(100% / 2 - 0.8rem);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-card {
+      width: 100%;
+    }
   }
