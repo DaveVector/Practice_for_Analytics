@@ -74,14 +74,52 @@ h2 {
   nav ul li {
     margin-right: 1rem;
   }
-  
+
+  .icons {
+    display: flex;
+    align-items: center;
+  }
+
   .icons a {
+    display: flex;
     color: #fff;
     margin-left: 1rem;
   }
+
+  /*Налаштування іконок*/
+  a > svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 1.3px;
+  }
+
+  svg[className="solid"] {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1px;
+  }
+
+  /* Стиль для кнопки перемикання валют */
+  #currency-switch {
+    min-width: 55px;
+    height: 100%;
   
-  .icons a i {
-    font-size: 1.5rem; /* або іншій потрібний розмір */
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  
+    background-color: #333;
+    color: #fff;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  #currency-switch:hover {
+    background-color: #555;
+    /* transform: scale(1.05); */
   }
   
   /* Головна секція */

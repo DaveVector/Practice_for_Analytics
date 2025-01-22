@@ -18,14 +18,12 @@ fetch('data/products.json')
       let buttonHTML = '';
 
       if (product.availability === 'Немає в наявності') {
-        // Якщо товару немає в наявності
         priceHTML = `
           <p class="price faded" data-uah="${product.priceUAH}" data-usd="${product.priceUSD}">
             ${product.priceUAH} грн
           </p>`;
         buttonHTML = '<button class="reserve">Забронювати</button>';
       } else if (product.discountUAH > 0) {
-        // Якщо товар є в наявності і є знижка
         priceHTML = `
           <p class="discount" data-uah="${product.priceUAH}" data-usd="${product.priceUSD}">
             ${product.priceUAH} грн
@@ -35,7 +33,6 @@ fetch('data/products.json')
           </p>`;
         buttonHTML = '<button>Додати в кошик</button>';
       } else {
-        // Якщо товар є в наявності і знижки немає
         priceHTML = `
           <p class="price no-discount" data-uah="${product.priceUAH}" data-usd="${product.priceUSD}">
             ${product.priceUAH} грн
@@ -51,7 +48,11 @@ fetch('data/products.json')
         <div class="details">
           <h3 class="name">${product.name}</h3>
           <p class="availability ${product.availability === 'В наявності' ? 'in-stock' : 'out-of-stock'}">
-            <i class="fa-solid fa-truck"></i> ${product.availability}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="solid">
+            <path d="M3.375 4.5C2.339 4.5 1.5 5.34 1.5 6.375V13.5h12V6.375c0-1.036-.84-1.875-1.875-1.875h-8.25ZM13.5 15h-12v2.625c0 1.035.84 1.875 1.875 1.875h.375a3 3 0 1 1 6 0h3a.75.75 0 0 0 .75-.75V15Z" />
+            <path d="M8.25 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0ZM15.75 6.75a.75.75 0 0 0-.75.75v11.25c0 .087.015.17.042.248a3 3 0 0 1 5.958.464c.853-.175 1.522-.935 1.464-1.883a18.659 18.659 0 0 0-3.732-10.104 1.837 1.837 0 0 0-1.47-.725H15.75Z" />
+            <path d="M19.5 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+            </svg>${product.availability}
           </p>
           ${priceHTML}
         </div>
@@ -65,89 +66,23 @@ fetch('data/products.json')
   });
 
 // Логіка для перемикання валют
-document.getElementById('currency-switch').addEventListener('click', () => {
-  const prices = document.querySelectorAll('.price');
-  const discountPrices = document.querySelectorAll('.discount');
+const currencySwitch = document.getElementById('currency-switch');
 
-  // Перевіряємо, яка валюта зараз активна (UAH або USD)
-  const isUAH = prices[0].textContent.includes('грн');
+currencySwitch.addEventListener('click', () => {
+  // Перевіряємо поточну валюту
+  const isUAH = currencySwitch.textContent === 'UA';
+  const newCurrency = isUAH ? 'USD' : 'UA';
+  currencySwitch.textContent = newCurrency; // Змінюємо текст кнопки
 
-  // Оновлюємо ціни
+  // Оновлюємо ціни на сторінці
+  const prices = document.querySelectorAll('.price, .discount');
   prices.forEach(priceEl => {
     const priceUAH = priceEl.dataset.uah;
     const priceUSD = priceEl.dataset.usd;
 
-    // Оновлюємо ціну незалежно від стану
-    priceEl.textContent = isUAH ? `${priceUSD} $` : `${priceUAH} грн`;
-  });
-
-  // Оновлюємо старі ціни
-  discountPrices.forEach(discountEl => {
-    const discountUAH = discountEl.dataset.uah;
-    const discountUSD = discountEl.dataset.usd;
-
-    // Перемикаємо між UAH та USD
-    discountEl.textContent = isUAH ? `${discountUSD} $` : `${discountUAH} грн`;
-  });
-});
-
-// Логіка для перемикання валют
-document.getElementById('currency-switch').addEventListener('click', () => {
-  const prices = document.querySelectorAll('.price');
-  const discountPrices = document.querySelectorAll('.discount');
-
-  // Перевіряємо, яка валюта зараз активна (UAH або USD)
-  const isUAH = prices[0].textContent.includes('грн');
-
-  // Оновлюємо ціни
-  prices.forEach(priceEl => {
-    const priceUAH = priceEl.dataset.uah;
-    const priceUSD = priceEl.dataset.usd;
-
-    if (priceEl.classList.contains('faded')) {
-      // Якщо товару немає в наявності, додаємо "Попередня ціна:"
-      priceEl.textContent = isUAH
-        ? `Попередня ціна: ${priceUSD} $`
-        : `Попередня ціна: ${priceUAH} грн`;
-    } else {
-      // Звичайне оновлення ціни
-      priceEl.textContent = isUAH ? `${priceUSD} $` : `${priceUAH} грн`;
-    }
-  });
-
-  // Оновлюємо старі ціни
-  discountPrices.forEach(discountEl => {
-    const discountUAH = discountEl.dataset.uah;
-    const discountUSD = discountEl.dataset.usd;
-
-    // Перемикаємо між UAH та USD
-    discountEl.textContent = isUAH ? `${discountUSD} $` : `${discountUAH} грн`;
-  });
-});
-
-// Логіка для перемикання валют
-document.getElementById('currency-switch').addEventListener('click', () => {
-  const prices = document.querySelectorAll('.price');
-  const discountPrices = document.querySelectorAll('.discount');
-
-  // Перевіряємо, яка валюта зараз активна (UAH або USD)
-  const isUAH = prices[0].textContent.includes('грн');
-
-  // Оновлюємо ціни
-  prices.forEach(priceEl => {
-    const priceUAH = priceEl.dataset.uah;
-    const priceUSD = priceEl.dataset.usd;
-
-    // Перемикаємо між UAH та USD
-    priceEl.textContent = isUAH ? `${priceUSD} $` : `${priceUAH} грн`;
-  });
-
-  // Оновлюємо старі ціни
-  discountPrices.forEach(discountEl => {
-    const discountUAH = discountEl.dataset.uah;
-    const discountUSD = discountEl.dataset.usd;
-
-    // Перемикаємо між UAH та USD
-    discountEl.textContent = isUAH ? `${discountUSD} $` : `${discountUAH} грн`;
+    // Відображаємо ціну залежно від обраної валюти
+    priceEl.textContent = newCurrency === 'USD'
+      ? `${priceUSD} $`
+      : `${priceUAH} грн`;
   });
 });
