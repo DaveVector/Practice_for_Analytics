@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "name": "Товар 1",
+      "price": 100,
+      "currency": "UAH",
+      "image": "images/product1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Товар 2",
+      "price": 200,
+      "currency": "UAH",
+      "image": "images/product2.jpg"
+    }
+  ]
+  

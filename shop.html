@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сторінка товарів</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+      <a href="/index.html" class="logo">
+        <h1>
+          <span>S</span>
+          <span>I</span>
+          <span>T</span>
+          <span>E</span>
+        </h1>
+        <span>for GTM Practice</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#">Про компанію</a></li>
+          <li><a href="shop.html">Товари</a></li>
+          <li><a href="#">Контакти</a></li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <button id="currency-switch">Валюта $</button>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="#"><i class="fa-solid fa-user"></i></a>
+      </div>
+    </header>
+
+  <main>
+    <section class="breadcrumbs">
+      <a href="/index.html">Головна</a>
+    </section>
+    <div class="h2">
+      <h2>Сторінка товарів</h2>
+    </div>
+    <div class="catalog">
+      <div class="filter-group">
+        <span>Фільтри</span>
+        <label><input type="checkbox"> Безрамковий дисплей</label>
+        <label><input type="checkbox"> Велика діагональ</label>
+        <label><input type="checkbox"> 3.3 камери</label>
+        <label><input type="checkbox"> 3.4 камери</label>
+        <label><input type="checkbox"> 3 потужною батареєю</label>
+        <label><input type="checkbox"> Захищений смартфон</label>
+        <label><input type="checkbox"> Samsung</label>
+        <label><input type="checkbox"> Xiaomi</label>
+        <label><input type="checkbox"> Apple</label>
+        <label><input type="checkbox"> Motorola</label>
+        <label><input type="checkbox"> Realme</label>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div id="products-container">
+            <!-- Тут будуть з'являтися картки товарів -->
+          </div>
+        </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Сторінка товарів</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
