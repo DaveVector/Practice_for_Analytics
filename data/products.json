@@ -1,6 +1,26 @@
 [
   {
     "id": 1,
+    "name": "Acer Nitro v15 ANV15-51-53R5",
+    "priceUAH": 28499,
+    "priceUSD": 730,
+    "discountUAH": 3000,
+    "discountUSD": 80,
+    "availability": "В наявності",
+    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
+  },
+  {
+    "id": 2,
+    "name": "Ігровий манітор 24 IPS Asus TUF Gaming",
+    "priceUAH": 32000,
+    "priceUSD": 1150,
+    "discountUAH": 0,
+    "discountUSD": 0,
+    "availability": "В наявності",
+    "image": "Ігровий манітор 24 IPS Asus TUF Gaming.png"
+  },
+  {
+    "id": 3,
     "name": "Xiaomi Redmi 14C 6/128GB",
     "priceUAH": 5999,
     "priceUSD": 153,
@@ -10,7 +30,7 @@
     "image": "Xiaomi Redmi 14C.png"
   },
   {
-    "id": 2,
+    "id": 4,
     "name": "Blackview TAB90 blak 4/64GB",
     "priceUAH": 8699,
     "priceUSD": 223,
@@ -20,43 +40,53 @@
     "image": "Blackview TAB90 blak.png"
   },
   {
-    "id": 3,
-    "name": "Acer Nitro v15 ANV15-51-53R5",
-    "priceUAH": 28400,
-    "priceUSD": 729,
-    "discountUAH": 3000,
-    "discountUSD": 80,
-    "availability": "В наявності",
-    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
-  },
-  {
-    "id": 4,
-    "name": "Acer Nitro V 15 ANV15-51-53R5",
-    "priceUAH": 28400,
-    "priceUSD": 729,
-    "discountUAH": 3000,
-    "discountUSD": 80,
-    "availability": "В наявності",
-    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
-  },
-  {
     "id": 5,
-    "name": "Acer Nitro V 15 ANV15-51-53R5",
-    "priceUAH": 28400,
-    "priceUSD": 729,
-    "discountUAH": 3000,
-    "discountUSD": 80,
+    "name": "Монітор 24 IPS Xiaomi A24i",
+    "priceUAH": 11999,
+    "priceUSD": 305,
+    "discountUAH": 0,
+    "discountUSD": 0,
     "availability": "В наявності",
-    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
+    "image": "Монітор 24 IPS Xiaomi A24i.png"
   },
   {
     "id": 6,
-    "name": "Acer Nitro V 15 ANV15-51-53R5",
-    "priceUAH": 28400,
-    "priceUSD": 729,
-    "discountUAH": 3000,
-    "discountUSD": 80,
+    "name": "МФУ Epson L3250",
+    "priceUAH": 16500,
+    "priceUSD": 425,
+    "discountUAH": 2000,
+    "discountUSD": 50,
     "availability": "В наявності",
-    "image": "Acer Nitro V 15 ANV15-51-53R5.png"
+    "image": "МФУ Epson L3250.png"
+  },
+  {
+    "id": 7,
+    "name": "Ігрова миш Razer DeathAdder Essential",
+    "priceUAH": 5300,
+    "priceUSD": 135,
+    "discountUAH": 0,
+    "discountUSD": 0,
+    "availability": "В наявності",
+    "image": "Ігрова миш Razer DeathAdder Essential.png"
+  },
+  {
+    "id": 8,
+    "name": "Ігрові навушники Redragon Pelias",
+    "priceUAH": 3600,
+    "priceUSD": 95,
+    "discountUAH": 0,
+    "discountUSD": 0,
+    "availability": "В наявності",
+    "image": "Ігрові навушники Redragon Pelias.png"
+  },
+  {
+    "id": 9,
+    "name": "Netac Disk SSD 256GB",
+    "priceUAH": 1600,
+    "priceUSD": 42,
+    "discountUAH": 0,
+    "discountUSD": 0,
+    "availability": "В наявності",
+    "image": "Netac Disk SSD 256GB.png"
   }
 ]
