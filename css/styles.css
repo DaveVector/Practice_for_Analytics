@@ -44,6 +44,35 @@ body {
   font-style: italic;
 }
 
+/* Слайдер */
+.slider {
+  display: flex;
+  overflow: hidden; /* Ховає слайди, що виходять за межі контейнера */
+  width: 100%; /* Контейнер займає всю ширину */
+}
+
+.slide {
+  flex: 0 0 100%; /* Кожен слайд займає 100% ширини контейнера */
+  text-align: center;
+  transition: transform 0.5s ease-in-out; /* Анімація зміни слайдів */
+  opacity: 1; /* Встановлюємо видимість слайдів */
+}
+
+.slider .slide h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+.slider .slide p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+
+
 h2 {
     margin: 1rem;
 
@@ -51,7 +80,7 @@ h2 {
     line-height: 1.2;
     font-weight: bold;
 
-    color: #34c426
+    color: #007BFF
   }
   
   nav ul {
@@ -144,35 +173,56 @@ h2 {
     transition: background-color 0.3s, transform 0.2s;
   }
   
-  #currency-switch:hover {
-    background-color: #555;
-    /* transform: scale(1.05); */
-  }
-  
+    #currency-switch:hover {
+    background-color: #555;  /* transform: scale(1.05); */
+    }
+      
   /* Головна секція */
   .hero {
     padding: 2rem;
     text-align: center;
   }
-  
+
   .hero h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   .hero p {
     margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #333;
   }
-  
-  .cta {
+
+  .hero .highlight {
+    font-size: 24px;
+    font-weight: bold;
+    color: #36b936;
+  }
+
+  /* Кнопка */
+  .cta-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .hero .cta {
     display: inline-block;
-    background-color: #007bff;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
     color: #fff;
+    background-color: #36b936;
+    border-radius: 0.5rem;
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
   }
-  
+
+  .hero .cta:hover {
+    background-color: #36b936;
+  }
+
   /* Секція форми */
   .contact-form {
     background-color: #f7f7f7;
