@@ -42,8 +42,8 @@ fetch('data/products.json')
         `;
       }
 
-      priceHTML = `
-        <p class="price ${priceClass}" data-uah="${product.priceUAH}" data-usd="${product.priceUSD}">
+      priceHTML += `
+        <p class="price ${priceClass}" data-uah="${product.priceUAH - product.discountUAH}" data-usd="${product.priceUSD - product.discountUSD}">
           ${currentFinalPrice} ${currencySymbol}
         </p>
       `;
