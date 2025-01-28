@@ -24,6 +24,9 @@ function addToCart(id) {
     price: product?.querySelector(".price").textContent.replace(/\D/g, ''), // Ціна товару
     currency: localStorage.getItem("currency"), // Валюта
   });
+  
+  // Відстеження івенту
+  console.log('Data Layer:', window.dataLayer);
 
   // === Створення кастомного івенту ===
   // const customEvent = new CustomEvent('addToCartEvent', {
