@@ -16,6 +16,15 @@ function addToCart(id) {
 
   const product = document.querySelector(`.product-card[data-id="${id}"]`)
 
+  // === Передача даних у Data Layer ===
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'addToCartEvent',
+    name: product?.querySelector(".name").textContent, // Ім'я товару
+    price: product?.querySelector(".price").textContent.replace(/\D/g, ''), // Ціна товару
+    currency: localStorage.getItem("currency"), // Валюта
+  });
+
   // === Створення кастомного івенту ===
   const customEvent = new CustomEvent('addToCartEvent', {
     detail: {
