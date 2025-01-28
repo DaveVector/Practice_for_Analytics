@@ -11,4 +11,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // Перемикання кожні 5 секунд
   setInterval(switchSlide, 5000);
 });
-

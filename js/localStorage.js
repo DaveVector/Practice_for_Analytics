@@ -13,6 +13,21 @@ function addToCart(id) {
   updateCartCount();
 
   console.log(`Товар із id ${id} додано до кошика. Поточний кошик:`, cart);
+
+  const product = document.querySelector(`.product-card[data-id="${id}"]`)
+
+  // === Створення кастомного івенту ===
+  const customEvent = new CustomEvent('addToCartEvent', {
+    detail: {
+        name: product?.querySelector(".name").textContent, // Витягуємо ім'я товару
+        price: product?.querySelector(".price").textContent.replace(/\D/g, ''), // Витягуємо ціну // (/\D/g, '') - Заміна всіх нецифрових символів на порожній рядок
+        currency: localStorage.getItem("currency"), // Передаємо обрану валюту
+    },
+  })
+  
+  // Відправка івенту
+  document.dispatchEvent(customEvent);
+  console.log('Custom event "addToCartEvent" dispatched:', customEvent.detail);
 }
 
 // === Оновлення лічильника товарів у кошику ===
