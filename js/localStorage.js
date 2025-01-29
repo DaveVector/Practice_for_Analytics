@@ -21,7 +21,7 @@ function addToCart(id) {
   window.dataLayer.push({
     event: 'addToCartEvent',
     name: product?.querySelector(".name").textContent, // Ім'я товару
-    price: product?.querySelector(".price").textContent.replace(/\D/g, ''), // Ціна товару
+    value: product?.querySelector(".price").textContent.replace(/\D/g, ''), // Ціна товару
     currency: localStorage.getItem("currency"), // Валюта
   });
   
