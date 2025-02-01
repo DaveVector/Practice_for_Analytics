@@ -48,7 +48,7 @@ const Cart = (() => {
         event: 'add_to_cart', // Назва івенту
         name: productName, // Ім'я товару
         value: productPrice, // Ціна товару
-        currency: productCurrency,// Валюта
+        currency: productCurrency, // Валюта
       });
 
       // Відстеження івенту
