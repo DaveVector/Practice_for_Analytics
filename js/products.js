@@ -106,8 +106,8 @@ currencySwitch.addEventListener('click', () => {
   currencySwitch.textContent = newCurrency; // Змінюємо текст кнопки
 
   // Зберігаємо валюту в Local Storage
-  setCurrency(newCurrency); // Використовуємо функцію з storage.js
+  Currency.setCurrency(newCurrency); // Використовуємо функцію з storage.js
 
   // Оновлюємо ціни на сторінці
-  updatePrices(newCurrency);
+  Currency.updatePrices(newCurrency);
 });
