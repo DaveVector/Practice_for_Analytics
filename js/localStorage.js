@@ -1,146 +1,141 @@
-// === Додавання товару до Local Storage ===
-function addToCart(id) {
-  // Отримуємо поточний кошик
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+// === Модуль "Cart" ===
+const Cart = (() => {
+  // === Приватні методи ===
+  const getCartFromStorage = () => JSON.parse(localStorage.getItem('cart')) || {};
+  const saveCartToStorage = (cart) => localStorage.setItem('cart', JSON.stringify(cart));
 
-  // Додаємо товар або збільшуємо його кількість
-  cart[id] = (cart[id] || 0) + 1;
+  // === Публічні методи ===
+  return {
+    // Отримання кошика
+    getCart: () => getCartFromStorage(),
 
-  // Зберігаємо оновлений кошик
-  localStorage.setItem('cart', JSON.stringify(cart));
+    // Оновлення лічильника товарів у кошику
+    updateCartCount: () => {
+      const cart = getCartFromStorage();
+      const totalCount = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+      const cartCountElement = document.getElementById('cart-count');
 
-  // Оновлюємо лічильник
-  updateCartCount();
+      if (cartCountElement) {
+        cartCountElement.textContent = totalCount;
+        cartCountElement.classList.toggle("hidden", totalCount === 0);
+      }
+    },
 
-  console.log(`Товар із id ${id} додано до кошика. Поточний кошик:`, cart);
+    // Додавання товару до кошика
+    addToCart: (id) => {
+      if (!id) return console.error('ID товару не вказано.');
 
-  const product = document.querySelector(`.product-card[data-id="${id}"]`)
+      const cart = getCartFromStorage();
+      cart[id] = (cart[id] || 0) + 1;
+      saveCartToStorage(cart);
+      Cart.updateCartCount();
+      console.log(`Товар із id ${id} додано. Поточний кошик:`, cart);
 
-  // === Передача даних у Data Layer ===
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'addToCartEvent',
-    name: product?.querySelector(".name").textContent, // Ім'я товару
-    value: product?.querySelector(".price").textContent.replace(/\D/g, ''), // Ціна товару
-    currency: localStorage.getItem("currency"), // Валюта
-  });
-  
-  // Відстеження івенту
-  console.log('Data Layer:', window.dataLayer);
+      Cart.customEventGTM(id);
+    },
 
-  // === Створення кастомного івенту ===
-  // const customEvent = new CustomEvent('addToCartEvent', {
-  //   detail: {
-  //       name: product?.querySelector(".name").textContent, // Витягуємо ім'я товару
-  //       price: product?.querySelector(".price").textContent.replace(/\D/g, ''), // Витягуємо ціну // (/\D/g, '') - Заміна всіх нецифрових символів на порожній рядок
-  //       currency: localStorage.getItem("currency"), // Передаємо обрану валюту
-  //   },
-  // })
-  
-  // Відправка івенту
-//   document.dispatchEvent(customEvent);
-//   console.log('Custom event "addToCartEvent" dispatched:', customEvent.detail);
-}
+    customEventGTM: (id) => {
+      // Створюємо змінні для Data Layer
+      const product = document.querySelector(`.product-card[data-id="${id}"]`)
+      const productName = product?.querySelector(".name")?.textContent || "Unknown Product"; // Створюємо змінну "Ім'я товару"
+      const productPrice = product?.querySelector(".price")?.textContent.replace(/\D/g, '') || 0; // Створюємо змінну "Ціна товару"
+      const productCurrency = Currency.getCurrency(); // Створюємо змінну "Валюта"
+      
 
-// === Оновлення лічильника товарів у кошику ===
-function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
-  const totalCount = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+      // === Передача даних у Data Layer ===
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'add_to_cart', // Назва івенту
+        items: [{
+          name: productName, // Ім'я товару
+          value: productPrice, // Ціна товару
+          currency: productCurrency, // Валюта
+        }],
+      });
 
-  const cartCountElement = document.getElementById('cart-count');
-  cartCountElement.textContent = totalCount;
+      // Відстеження івенту
+      console.log('Data Layer:', window.dataLayer);
+    },
 
-  // Ховаємо або показуємо лічильник залежно від кількості товарів
-  if (totalCount === 0) {
-    cartCountElement.classList.add("hidden");
-  } else {
-    cartCountElement.classList.remove("hidden");
-  }
-}
+    // Зменшення кількості товару
+    decreaseItemQuantity: (id) => {
+      if (!id) return console.error('ID товару не вказано.');
 
-// Викликаємо функцію при завантаженні сторінки
-updateCartCount();
+      const cart = getCartFromStorage();
+      if (cart[id]) {
+        cart[id] -= 1;
+        if (cart[id] <= 0) delete cart[id];
+        saveCartToStorage(cart);
+        Cart.updateCartCount();
+        console.log(`Кількість товару із id ${id} зменшено. Поточний кошик:`, cart);
+      } else {
+        console.log(`Товар із id ${id} не знайдено в кошику.`);
+      }
+    },
 
-// === Отримання кошика з Local Storage ===
-function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || {};
-}
+    // Видалення товару з кошика
+    removeFromCart: (id) => {
+      if (!id) return console.error('ID товару не вказано.');
 
-// === Зменшення кількості товару ===
-function decreaseItemQuantity(id) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+      const cart = getCartFromStorage();
+      if (cart[id]) {
+        delete cart[id];
+        saveCartToStorage(cart);
+        Cart.updateCartCount();
+        console.log(`Товар із id ${id} видалено. Поточний кошик:`, cart);
+      } else {
+        console.log(`Товар із id ${id} не знайдено в кошику.`);
+      }
+    },
 
-  // Зменшуємо кількість товару, якщо він є
-  if (cart[id]) {
-    cart[id] -= 1;
+    // Очищення кошика
+    clearCart: () => {
+      localStorage.removeItem('cart');
+      Cart.updateCartCount();
+      console.log('Кошик очищено.');
+    },
+  };
+})();
 
-    // Видаляємо товар, якщо кількість дорівнює 0
-    if (cart[id] <= 0) {
-      delete cart[id];
-    }
+// === Модуль "Currency" ===
+const Currency = (() => {
+  // === Публічні методи ===
+  return {
+    // Збереження обраної валюти в Local Storage
+    setCurrency: (currency) => {
+      if (!currency) return console.error('Валюта не вказана.');
+      localStorage.setItem('currency', currency);
+    },
 
-    // Оновлюємо Local Storage
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
+    // Отримання обраної валюти з Local Storage
+    getCurrency: () => localStorage.getItem('currency') || 'UA',
 
-    console.log(`Кількість товару із id ${id} зменшено. Поточний кошик:`, cart);
-  } else {
-    console.log(`Товар із id ${id} не знайдено в кошику.`);
-  }
-}
-
-// === Видалення товару з кошика ===
-function removeFromCart(id) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
-
-  // Видаляємо товар, якщо він існує
-  if (cart[id]) {
-    delete cart[id];
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-
-    console.log(`Товар із id ${id} видалено. Поточний кошик:`, cart);
-  } else {
-    console.log(`Товар із id ${id} не знайдено в кошику.`);
-  }
-}
-
-// === Очищення кошика ===
-function clearCart() {
-  localStorage.removeItem('cart');
-  updateCartCount();
-  console.log('Кошик очищено');
-}
-
-function updatePrices(currency) {
-  const prices = document.querySelectorAll('.price, .discount');
-  prices.forEach(priceEl => {
-    const priceUAH = priceEl.dataset.uah;
-    const priceUSD = priceEl.dataset.usd;
-
-    priceEl.textContent = currency === 'USD'
-      ? `${priceUSD} $`
-      : `${priceUAH} грн`;
-  });
-}
-
-// Збереження обраної валюти в Local Storage
-function setCurrency(currency) {
-  localStorage.setItem('currency', currency);
-}
-
-// Отримання обраної валюти з Local Storage
-function getCurrency() {
-  return localStorage.getItem('currency') || 'UA'; // 'UA' за замовчуванням
-}
-
+    // Оновлення цін на сторінці
+    updatePrices: (currency) => {
+      const prices = document.querySelectorAll('.price, .discount');
+      prices.forEach(priceEl => {
+        const priceUAH = priceEl.dataset.uah;
+        const priceUSD = priceEl.dataset.usd;
+        priceEl.textContent = currency === 'USD'
+          ? `${priceUSD} $`
+          : `${priceUAH} грн`;
+      });
+    },
+  };
+})();
 
 // === Ініціалізація функціоналу кнопок "Додати в кошик" ===
 function initAddToCart() {
   document.querySelectorAll(".product-card .add-to-cart--js").forEach(button => {
     button.addEventListener("click", () => {
       const productId = button.closest(".product-card")?.dataset.id;
-      addToCart(productId);
+      if (productId) Cart.addToCart(productId);
     });
   });
 }
+
+// === Ініціалізація ===
+document.addEventListener("DOMContentLoaded", () => {
+  Cart.updateCartCount(); // Оновлюємо лічильник при завантаженні сторінки
+  initAddToCart(); // Ініціалізуємо кнопки "Додати в кошик"
+});

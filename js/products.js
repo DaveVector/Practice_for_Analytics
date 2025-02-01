@@ -1,4 +1,4 @@
-const currentCurrency = getCurrency();
+const currentCurrency = Currency.getCurrency();
 
 // Завантаження даних із JSON і відображення карток
 fetch('data/products.json')
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Отримуємо збережену валюту
-  const savedCurrency = getCurrency();
+  const savedCurrency = currentCurrency;
 
   const curencySwitch = document.getElementById("currency-switch");
   curencySwitch.innerHTML = savedCurrency;
