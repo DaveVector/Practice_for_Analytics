@@ -46,14 +46,9 @@ const Cart = (() => {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'add_to_cart', // Назва івенту
-        name: productName,
-        value: productPrice,
-        currency: productCurrency,
-        // items: [{
-        //   name: productName, // Ім'я товару
-        //   value: productPrice, // Ціна товару
-        //   currency: productCurrency, // Валюта
-        // }],
+        name: productName, // Ім'я товару
+        value: productPrice, // Ціна товару
+        currency: productCurrency,// Валюта
       });
 
       // Відстеження івенту
