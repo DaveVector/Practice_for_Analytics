@@ -1,19 +1,19 @@
 /* Основні стилі */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Шапка */
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Шапка */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
   
 .logo {
   display: block;
@@ -34,7 +34,7 @@ body {
   font-weight: bold;
 }
 
-.logo > span {
+.logo-subtext {
   display: block;
 
   font-size: 12px;
@@ -43,6 +43,168 @@ body {
   color: #b4b4b4;
   font-style: italic;
 }
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Навігація */
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Ефект при наведенні */
+/* .nav-links a:hover {
+  text-decoration: underline;
+} */
+
+/* Стиль для кнопки перемикання валют */
+#currency-switch {
+  min-width: 55px;
+  height: 100%;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+
+  background-color: #333;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#currency-switch:hover {
+  background-color: #555;  /* transform: scale(1.05); */
+}
+
+/*Налаштування іконок*/
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons a {
+  display: flex;
+  color: #fff;
+  margin-left: 1rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none; /* Приховуємо лічильник */
+}
+
+/*Налаштування SVG*/
+svg[className="size-28"] {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.3px;
+}
+
+svg[className="solid"] {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1px;
+}
+
+svg[className="size-12"] {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2px;
+}
+
+/* Бургер-меню */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 38px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+
+/* Адаптивність */
+@media (max-width: 700px) {
+  .burger-menu {
+    display: flex;
+  }
+
+  .nav-links {
+    opacity: 0; /* Початково невидиме */
+    transform: translateY(-20px); /* Прибираємо в гору */
+    display: none; /* Приховано за замовчуванням */
+    flex-direction: column;
+    white-space: nowrap;
+    background-color: #333; /* Фон */
+    position: absolute;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-links.active {
+    display: flex;
+    width: 100%;
+    left: 0;
+    transform: translateY(36px); /* Повертаємо на місце */
+    opacity: 1; /* Робимо видимим */
+  }
+
+  .nav-links li {
+    margin: 0.3rem;
+  }
+
+  .icons {
+    gap: 0.5rem;
+  }
+
+  .icons a {
+    margin-left: 0.5rem;
+  }
+}
+
+
 
 /* Слайдер */
 .slider {
@@ -73,7 +235,7 @@ body {
 
 
 
-h2 {
+  h2 {
     margin: 1rem;
 
     font-size: 28px;
@@ -82,100 +244,6 @@ h2 {
 
     color: #007BFF
   }
-  
-  nav ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    margin: 0 1rem;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  nav ul li {
-    margin-right: 1rem;
-  }
-
-  .icons {
-    display: flex;
-    align-items: center;
-  }
-
-  .icons a {
-    display: flex;
-    color: #fff;
-    margin-left: 1rem;
-  }
-  
-  .cart-count {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hidden {
-    display: none; /* Приховуємо лічильник */
-  }
-
-  /*Налаштування іконок*/
-  svg[className="size-28"] {
-    width: 28px;
-    height: 28px;
-    stroke-width: 1.3px;
-  }
-
-  svg[className="solid"] {
-    width: 22px;
-    height: 22px;
-    stroke-width: 1px;
-  }
-
-  svg[className="size-12"] {
-    width: 12px;
-    height: 12px;
-    stroke-width: 2px;
-  }
-
-  /* Стиль для кнопки перемикання валют */
-  #currency-switch {
-    min-width: 55px;
-    height: 100%;
-  
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1;
-  
-    background-color: #333;
-    color: #fff;
-    border: 1px solid white;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-    #currency-switch:hover {
-    background-color: #555;  /* transform: scale(1.05); */
-    }
       
   /* Головна секція */
   .hero {
@@ -265,7 +333,7 @@ h2 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 1rem 1rem 0rem 1rem;
+    margin: 1rem;
     font-size: 12px;
     font-weight: 700;
   }
@@ -459,13 +527,13 @@ h2 {
     text-decoration: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .product-card {
       width: calc(100% / 2 - 0.8rem);
     }
   }
   
-  @media (max-width: 480px) {
+  @media (max-width: 700px) {
     .product-card {
       width: 100%;
     }

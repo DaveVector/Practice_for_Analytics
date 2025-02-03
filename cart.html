@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8GRD3WG');</script>
+    <!-- End Google Tag Manager -->
+     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site for GTM Practice</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cart-styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-wrap">
+      <a href="index.html" class="logo">
+        <h1>
+          <span>S</span>
+          <span>I</span>
+          <span>T</span>
+          <span>E</span>
+        </h1>
+        <span class="logo-subtext">for Analytics Practice</span>
+      </a>
+
+      <!-- Бургер-меню -->
+      <button id="burger-menu" class="burger-menu" aria-label="Відкрити меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      </div>
+
+      <!-- Навігація -->
+      <nav class="nav-container">
+        <ul class="nav-links">
+          <li><a href="#">Про компанію</a></li>
+          <li><a href="shop.html">Товари</a></li>
+          <li><a href="#">Контакти</a></li>
+        </ul>
+      </nav>
+      
+      <div class="icons">
+        <button id="currency-switch">UA</button>               
+        <a href="cart.html" class="cart-icon" style="position: relative;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-28">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+          </svg>
+          <span id="cart-count" class="cart-count hidden">0</span>
+        </a>
+        <a href="#" class="user-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-28">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+        </a>
+      </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="index.html">
+                Головна
+            </a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-12">
+            <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
+            </svg>      
+            <div class="breadcrumbs-link">
+                Кошик
+            </div>
+        </div>
+        <div class="h2">
+            <h2>Кошик товарів</h2>
+        </div>
+        <div class="card-page">
+            <div class="cart-wrap">
+                <div class="cart-grid" id="cart-grid">
+                    <!-- Тут будуть з'являтися товари кошика -->
+                </div>
+                <div class="cart-total-container" id="cart-total-container">
+                    <!-- Тут буде відображатися загальна сума -->
+                </div>
+            </div>
+            <div class="checkout-form">
+                <h3>Оформлення замовлення</h3>
+                <form id="checkout-form">
+                  <div class="form-group">
+                    <label for="name">Ім'я та фамілія:</label>
+                    <input type="text" id="name" name="name" required placeholder="Введіть ім'я та фамілію">
+                  </div>
+              
+                  <div class="form-group">
+                    <label for="phone">Номер телефону:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+38 (0XX) XXX-XX-XX">
+                  </div>
+              
+                  <div class="form-group">
+                    <label for="city">Місто:</label>
+                    <input type="text" id="city" name="city" required placeholder="Введіть місто">
+                  </div>
+              
+                  <div class="form-group">
+                    <label>Спосіб доставки:</label>
+                    <div class="radio-group">
+                      <label>
+                        <input type="radio" name="delivery" value="self-pickup" required> Самовивіз
+                      </label>
+                      <label>
+                        <input type="radio" name="delivery" value="courier"> Кур'єр
+                      </label>
+                    </div>
+                  </div>
+              
+                  <div class="form-group">
+                    <label>Спосіб оплати:</label>
+                    <div class="radio-group">
+                      <label>
+                        <input type="radio" name="payment" value="cash" required> Готівка
+                      </label>
+                      <label>
+                        <input type="radio" name="payment" value="card"> Карта
+                      </label>
+                    </div>
+                  </div>
+              
+                  <button type="submit" class="submit-btn">Підтвердити замовлення</button>
+                </form>
+              </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; SITE for Analytics Practice</p>
+    </footer>
+    <script src="js/burgerMenu.js"></script>
+    <script src="js/localStorage.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkoutForm.js"></script>
+</body>
+</html>

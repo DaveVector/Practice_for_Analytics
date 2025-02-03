@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Отримуємо збережену валюту
   const savedCurrency = currentCurrency;
 
-  const curencySwitch = document.getElementById("currency-switch");
-  curencySwitch.innerHTML = savedCurrency;
+  const currencySwitch = document.getElementById("currency-switch");
+  currencySwitch.innerHTML = savedCurrency;
 });
 
 currencySwitch.addEventListener('click', () => {
