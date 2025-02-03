@@ -77,20 +77,46 @@
       <h2>Сторінка товарів</h2>
     </div>
     <div class="catalog">
-      <div class="filter-group">
-        <span>Фільтри</span>
-        <label><input type="checkbox"> Безрамковий дисплей</label>
-        <label><input type="checkbox"> Велика діагональ</label>
-        <label><input type="checkbox"> 3.3 камери</label>
-        <label><input type="checkbox"> 3.4 камери</label>
-        <label><input type="checkbox"> 3 потужною батареєю</label>
-        <label><input type="checkbox"> Захищений смартфон</label>
-        <label><input type="checkbox"> Samsung</label>
-        <label><input type="checkbox"> Xiaomi</label>
-        <label><input type="checkbox"> Apple</label>
-        <label><input type="checkbox"> Motorola</label>
-        <label><input type="checkbox"> Realme</label>
+      
+      <div class="filters-container">
+        <div class="filter-accordion">
+          <div class="accordion-header">Бренди</div>
+          <div class="accordion-content open">
+            <label><input type="checkbox" data-filter="бренди" data-value="Samsung"> Samsung</label>
+            <label><input type="checkbox" data-filter="бренди" data-value="Xiaomi"> Xiaomi</label>
+            <label><input type="checkbox" data-filter="бренди" data-value="Apple"> Apple</label>
+          </div>
+        </div>
+      
+        <div class="filter-accordion">
+          <div class="accordion-header">Характеристики</div>
+          <div class="accordion-content">
+            <label><input type="checkbox" data-filter="характеристики" data-value="Безрамковий дисплей"> Безрамковий дисплей</label>
+            <label><input type="checkbox" data-filter="характеристики" data-value="Велика діагональ"> Велика діагональ</label>
+          </div>
+        </div>
+      
+        <div class="filter-accordion">
+          <div class="accordion-header">Ціна</div>
+          <div class="accordion-content">
+            <label><input type="radio" name="price" data-filter="ціна" data-value="До 5000 грн"> До 5000 грн</label>
+            <label><input type="radio" name="price" data-filter="ціна" data-value="5000–10000 грн"> 5000–10000 грн</label>
+          </div>
+        </div>
+      
+        <div class="filter-accordion">
+          <div class="accordion-header">Колір</div>
+          <div class="accordion-content">
+            <label><input type="checkbox" data-filter="колір" data-value="Чорний"> Чорний</label>
+            <label><input type="checkbox" data-filter="колір" data-value="Білий"> Білий</label>
+          </div>
+        </div>
+      
+        <div class="filter-actions">
+          <button class="cancel-btn">Скасовувати</button>
+        </div>
       </div>
+
       <div class="product-grid" id="product-grid">
         <!-- Тут будуть з'являтися картки товарів -->
       </div>
@@ -113,5 +139,6 @@
   <script src="js/burgerMenu.js"></script>
   <script src="js/localStorage.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/accordion.js"></script>
   </body>
 </html>
